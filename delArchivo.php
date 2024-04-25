@@ -1,5 +1,6 @@
 <?php
 $path = "archivos/";
+
 if (isset($_GET["accion"]) && $_GET["accion"] === "new") {
     if (isset($_GET["archivo"])) {
         $nombre_archivo = $_GET["archivo"];
@@ -15,10 +16,19 @@ if (isset($_GET["accion"]) && $_GET["accion"] === "new") {
     } else {
         echo "No se ha especificado el nombre del archivo.";
     }
-
+    header("refresh:3;url=index.php");
 }
 
 if (isset($_GET["accion"]) && $_GET["accion"] === "del") {
+    if (!isset($_GET["confirm"])) {
+        var_dump($_GET["archivo"]);
+        /*   header("refresh:3;url=read.php"); */
+        echo "<a href='delArchivo.php?accion=del&confirm=1&archivo= " . $_GET["archivo"] . " '>SI</a><br>
+        <a href='delArchivo.php?accion=del&confirm=0&archivo=' " . $_GET["archivo"] . " '>NO</a>";
+        exit;
+    }
+    if ($_GET["confirm"] === 0)
+        header("Location: readpat.php");
     if ($_GET["archivo"] === "prueva.es") {
         unlink($_GET["archivo"]);
         header("refresh:3;url=read.php");
@@ -39,20 +49,15 @@ if (isset($_GET["accion"]) && $_GET["accion"] === "edit") {
 
 if (isset($_GET["accion"]) && $_GET["accion"] === "update") {
     if (isset($_GET["archivo"])) {
-
-
+        var_dump($_GET["archivo"]);
         file_put_contents("archivos/" . $_GET["archivo"], $_GET["texto"]);
-
-
         echo "Éxito, se escribió " . $_GET["texto"] . " en el archivo " . $_GET["archivo"];
 
-
-
     } else {
-        fclose($archivo);
 
         echo "Error al modificar el archivo";
     }
+
 }
 ;
 
@@ -63,7 +68,7 @@ if (isset($_POST["accion"]) && $_POST["accion"] === "file") {
             if (is_uploaded_file($_FILES["file"]["tmp_name"])) {
                 $id = "1";
                 $Filename = $_FILES["file"]["name"];
-                $dir = "./archivos";
+                $dir = "archivos";
 
                 if (!file_exists($dir)) {
                     mkdir($dir, 0777, true);
@@ -73,7 +78,7 @@ if (isset($_POST["accion"]) && $_POST["accion"] === "file") {
 
                 }
                 if (file_exists($dir)) {
-                    move_uploaded_file($Filename, $dir);
+                    move_uploaded_file($_FILES["file"]["tmp_name"], $dir . "/" . $Filename);
                     echo "Archivo subido correctamente";
                 } else {
                     echo "No se ha podido subir el archivo";

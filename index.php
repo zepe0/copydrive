@@ -73,22 +73,20 @@
                     console.error("Error al obtener el archivo:", error);
                 });
         }
-        function Updatecontent(e) {
+        function Updatecontent() {
             try {
                 let archivo = document.getElementById("fileName").value;
                 let text = document.getElementById("contenidoArchivo").value;
                 const url = `http://localhost/copydrive/delArchivo.php?texto=${text}&accion=update&archivo=${archivo}`;
-                e.preventDefault();
+
                 fetch(url)
                     .then((response) => {
                         if (response.ok) {
-                            return response.text(); // Obtén la cadena de texto de la respuesta
-                        } else {
-                            throw "Error en la llamada Ajax";
+                            return response.text(); 
                         }
                     })
                     .then((data) => {
-                        console.log(data); // Aquí obtendrás la respuesta del servidor
+                        console.log(data); 
                         debugger;
                     })
                     .catch((error) => {
@@ -127,11 +125,6 @@
             }
         }
 
-
-
-
-
-
     </script>
 </head>
 
@@ -139,7 +132,7 @@
     <div class="SectionButton"><button onclick=opennewdoc()><i class="fa fa-file-text" aria-hidden="true"></i></button>
     </div>
     <div class="listado"><?php include "readpat.php" ?></div>
-    <dialog id=edit>
+    <dialog id="edit">
         <form action=""><label>Nombre Archivo: </label><input type="text" value="" placeholder="" id="inewName">
             <input type="hidden" value="" id="idArchivo">
             <button><i class="fa fa-window-close" aria-hidden="true" onclick=close()></i></button>
@@ -160,7 +153,7 @@
     </dialog>
     <dialog id="editcontent">
         <form action=""><input type="text" id="fileName"><textarea type="text" id="contenidoArchivo"></textarea><button
-                onclick="Updatecontent(e)">Enviar</button>
+                onclick="Updatecontent()">Enviar</button>
             <button><i class="fa fa-window-close" aria-hidden="true" onclick=close()></i></button>
         </form>
 
