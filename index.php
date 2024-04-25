@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=1.1">
     <title>Copydrive</title>
     <script>
         function files() {
@@ -82,11 +82,11 @@
                 fetch(url)
                     .then((response) => {
                         if (response.ok) {
-                            return response.text(); 
+                            return response.text();
                         }
                     })
                     .then((data) => {
-                        console.log(data); 
+                        console.log(data);
                         debugger;
                     })
                     .catch((error) => {
@@ -135,20 +135,21 @@
     <dialog id="edit">
         <form action=""><label>Nombre Archivo: </label><input type="text" value="" placeholder="" id="inewName">
             <input type="hidden" value="" id="idArchivo">
-            <button><i class="fa fa-window-close" aria-hidden="true" onclick=close()></i></button>
-            <button onclick=UpdateNAme()><i class="material-symbols-outlined">
-                    save_as
-                </i></button>
+            <button onclick=UpdateNAme()>
+                <i class="material-symbols-outlined"> save_as </i>
+            </button>
+            <button>
+                <i class="fa fa-window-close" aria-hidden="true" onclick=close()></i>
+            </button>
         </form>
     </dialog>
     <dialog id=new>
-        <form action=""><label>Nombre Archivo: </label><input type="file" id="file">
-
-
+        <form action="">
+            <input type="file" id="file">
             <button><i class="fa fa-window-close" aria-hidden="true" onclick=close()></i></button>
-            <button onclick=files()><i class="material-symbols-outlined">
-                    save_as
-                </i></button>
+            <button onclick=files()>
+                <i class="material-symbols-outlined">save_as</i>
+            </button>
         </form>
     </dialog>
     <dialog id="editcontent">

@@ -1,9 +1,75 @@
+.SectionButton {
+  text-align: center;
+
+  background: rgba(253, 187, 45, 1);
+  padding: 8px;
+}
 .document {
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
   align-items: center;
+  width: 70%;
+  border: 1px solid black;
+  box-shadow: -1px 1px 5px 3px rgb(219, 157, 238);
+}
+
+.izq {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.medio {
+  flex: 2;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.der {
+  flex: 1;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.der button {
+  cursor: pointer;
+}
+
+.der button i {
+  font-size: 14px;
+}
+
+.izq a {
+  text-decoration: none;
+  color: #333;
+}
+
+.der a {
+  text-decoration: none;
+  color: #f00;
 }
 
 .material-symbols-outlined {
   height: 10px !important;
+}
+.listado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background-image: linear-gradient(
+      0deg,
+      rgba(34, 193, 195, 1) 0%,
+      rgba(253, 187, 45, 1) 100%
+    ),
+    radial-gradient(
+      circle,
+      rgba(200, 162, 200, 1) 21%,
+      rgba(64, 224, 208, 1) 100%
+    );
+  padding: 16px;
+}
+
+.listado .document:nth-child(even) {
+  background-color: rgb(161, 159, 159);
 }
