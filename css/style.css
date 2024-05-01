@@ -1,3 +1,5 @@
+/* // #Boton para aññadir nuevo */
+
 .SectionButton {
   text-align: center;
 
@@ -12,7 +14,7 @@
   border: 1px solid black;
   box-shadow: -1px 1px 5px 3px rgb(219, 157, 238);
 }
-
+/* // Posicionamiento de tabla de documentos .document  */
 .izq {
   flex: 1;
   margin-left: 10px;
@@ -52,6 +54,8 @@
 .material-symbols-outlined {
   height: 10px !important;
 }
+
+/* // ##Fondo */
 .listado {
   display: flex;
   flex-direction: column;
@@ -69,7 +73,24 @@
     );
   padding: 16px;
 }
-
+/* // Color listado */
 .listado .document:nth-child(even) {
   background-color: rgb(161, 159, 159);
+}
+/* // Dialogos de confirmacion */
+.new {
+  margin-top: 20px;
+}
+
+.btnclose {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+#editcontent > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 300px;
 }
