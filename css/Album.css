@@ -6,3 +6,28 @@
   max-width: 300px;
   list-style: none;
 }
+
+.carpeta {
+  display: flex;
+  position: relative;
+  min-width: 100px;
+  max-width: 200px;
+  height: 150px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la solapa */
+.solapa {
+  position: absolute;
+  top: -20px;
+  left: -1px;
+  width: 80px; /* Ancho rectangular de la solapa */
+  height: 20px; /* Altura de la solapa */
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 7px 7px 0px 0px;
+}
