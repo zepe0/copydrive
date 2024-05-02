@@ -1,0 +1,19 @@
+#drop-area {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    width: 300px;
+    margin: 50px auto;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  #drop-area.dragover {
+    background: #e1e1e1;
+  }
+  .box {
+    border: 3px solid #666;
+    background-color: #ddd;
+    border-radius: .5em;
+    padding: 10px;
+    cursor: move; /* Aparecerá el icono de mover al arrastrar */
+}

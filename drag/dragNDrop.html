@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drag and Drop File Upload</title>
+    <link rel="stylesheet" href="dragNDrop.css" />
+  </head>
+  <body>
+    <div id="drop-area">Agafa i deixa els teus arxius aquí</div>
+
+    <script src="js/dragNDrop.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        function handleDragStart(e) {
+          this.style.opacity = "0.4";
+
+          dragSelect = this;
+
+          e.dataTransfer.effectAllowed = "move";
+          e.dataTransfer.setData("text/html", this.innerHTML);
+        }
+
+        function handleDragEnd(e) {
+          this.style.opacity = "1";
+
+          items.forEach(function (item) {
+            item.classList.remove("over");
+          });
+        }
+        function handleDrop(e) {
+          e.stopPropagation();
+
+          if (dragSelect !== this) {
+            dragSelect.innerHTML = this.innerHTML;
+            this.innerHTML = e.dataTransfer.getData("text/html");
+          }
+
+          return false;
+        }
+
+        function handleDragOver(e) {
+          if (e.preventDefault) {
+            e.preventDefault();
+          }
+
+          return false;
+        }
+
+        function handleDragEnter(e) {
+          this.classList.add("over");
+        }
+
+        function handleDragLeave(e) {
+          this.classList.remove("over");
+        }
+
+        let items = document.querySelectorAll(".container .box");
+        items.forEach(function (item) {
+          item.addEventListener("dragstart", handleDragStart);
+          item.addEventListener("dragover", handleDragOver);
+          item.addEventListener("dragenter", handleDragEnter);
+          item.addEventListener("dragleave", handleDragLeave);
+          item.addEventListener("dragend", handleDragEnd);
+          item.addEventListener("drop", handleDrop);
+        });
+      });
+    </script>
+    <ul class="container">
+      <li id="drag1" draggable="true" class="box">2</li>
+      <li id="drag2" draggable="true" class="box">🎟 fo</li>
+      <li id="drag3" draggable="true" class="box">🎟 fo</li>
+    </ul>
+  </body>
+</html>

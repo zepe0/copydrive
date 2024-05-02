@@ -1,0 +1,8 @@
+.listAlbum > ul > li {
+  list-style: none;
+}
+
+.listAlbum > ul > li > img {
+  max-width: 300px;
+  list-style: none;
+}

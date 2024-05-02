@@ -69,6 +69,7 @@
                     document.getElementById("contenidoArchivo").value = textString;
 
                 })
+
                 .catch((error) => {
                     console.error("Error al obtener el archivo:", error);
                 });
@@ -79,15 +80,15 @@
                 let text = document.getElementById("contenidoArchivo").value;
                 const url = `http://localhost/copydrive/delArchivo.php?texto=${text}&accion=update&archivo=${archivo}`;
 
-                fetch(url)
+                fetch(url, { cache: "no-cache" })
                     .then((response) => {
                         if (response.ok) {
                             return response.text();
                         }
                     })
                     .then((data) => {
-                        console.log(data);
-                        debugger;
+                        debugger
+                        window.location.href = "http://localhost/copydrive"
                     })
                     .catch((error) => {
                         console.error("Error:", error);
@@ -104,13 +105,14 @@
 
                 fetch(`http://localhost/copydrive/delArchivo.php?accion=edit&archivo=${original}&archivoMod=${newname}`).then((response) => {
                     if (response.ok) {
-                        return response.text(); // Obtén la cadena de texto de la respuesta
+                        return response.text();
+                        window.location.href = "http://localhost/copydrive" // Obtén la cadena de texto de la respuesta
                     } else {
                         throw "Error en la llamada Ajax";
                     }
                 })
                     .then((data) => {
-                        console.log(data); // Aquí obtendrás la respuesta del servidor
+
                         debugger;
                     })
                     .catch((error) => {
@@ -124,16 +126,28 @@
 
             }
         }
+        function goToAlbum(end) {
+            var url = `http://localhost/copydrive${end}`;
+            window.location.href = url;
 
+        }
     </script>
 </head>
 
 <body>
-    <div class="SectionButton"><button onclick=opennewdoc()><i class="fa fa-file-text" aria-hidden="true"></i></button>
+
+    <div class="SectionButton">
+        <button onclick=opennewdoc()>
+            <i class="fa fa-file-text" aria-hidden="true"></i>
+        </button>
+        <button onclick="goToAlbum('/img.html')">
+            <i class="fa-regular fa-image"></i>
+        </button>
     </div>
     <div class="listado"><?php include "readpat.php" ?></div>
     <dialog id="edit">
-        <form action="" class="new"><label>Nombre Archivo: </label><input type="text" value="" placeholder="" id="inewName">
+        <form action="" class="new"><label>Nombre Archivo: </label><input type="text" value="" placeholder=""
+                id="inewName">
             <input type="hidden" value="" id="idArchivo">
             <button onclick=UpdateNAme()>
                 <i class="material-symbols-outlined"> save_as </i>

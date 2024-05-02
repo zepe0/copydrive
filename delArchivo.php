@@ -49,7 +49,7 @@ if (isset($_GET["accion"]) && $_GET["accion"] === "edit") {
 
 if (isset($_GET["accion"]) && $_GET["accion"] === "update") {
     if (isset($_GET["archivo"])) {
-        var_dump($_GET["archivo"]);
+
         file_put_contents("archivos/" . $_GET["archivo"], $_GET["texto"]);
         echo "Éxito, se escribió " . $_GET["texto"] . " en el archivo " . $_GET["archivo"];
 
